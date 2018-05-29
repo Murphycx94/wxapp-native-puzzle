@@ -1,0 +1,62 @@
+.game {
+  width: 100%;
+  height: 100%;
+}
+.game-main {
+  width: 100%;
+}
+.game-main__title {
+  margin-top: 100rpx;
+  color: #ea2c19;
+  text-align: center;
+  font-size: 56rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.game-main__box {
+  position: relative;
+  margin: 100rpx auto 0;
+  width: 672rpx;
+  height: 672rpx;
+}
+.puzzle-item {
+  position: absolute;
+  width: 224rpx;
+  height: 224rpx;
+  background-color: #eee;
+  border: 2rpx solid #fff;
+  background-image: url(http://ofnct0qsm.bkt.clouddn.com/game-bg-01.jpg);
+  background-size: 660rpx 660rpx;
+  background-repeat: no-repeat;
+  background-position: -220rpx -220rpx;
+  color: transparent;
+}
+.animate-short {
+  transition: all .1s ease-in;
+}
+
+.animate-long {
+  transition: all .2s ease-out;
+}
+
+/**index.wxss**/
+/* .userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+} */

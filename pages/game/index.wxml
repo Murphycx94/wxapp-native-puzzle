@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view class="game">
+  <view class="game-main">
+    <view class="game-main__title">
+      <p wx:if="{{ win }}">胜利✌️</p>
+    </view>
+    <view class="game-main__box">
+      <view
+        class="puzzle-item {{ animate }}"
+        style="transform: translate3d({{ item.positionX }}rpx, {{ item.positionY }}rpx, 0); background-position: {{ item.imgX }}rpx {{ item.imgY }}rpx;"
+        wx:for="{{ puzzleList }}"
+        wx:key="{{ item.i }}"
+        wx:if="{{ item.active }}"
+        data-item="{{ item }}"
+        bindtap="onTap"
+      >
+        {{ item.id }}
+      </view>
+    </view>
+  </view>
+</view>
