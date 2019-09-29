@@ -1,31 +1,38 @@
 Page({
   data: {
+    count: 9,
+    number: 3,
+    length: 224,
     puzzles: [
-      { id: 0, i: 0, active: true, step: 0, move: false },
-      { id: 1, i: 1, active: true, step: 0, move: false },
-      { id: 2, i: 2, active: true, step: 0, move: false },
-      { id: 3, i: 3, active: true, step: 0, move: false },
-      { id: 4, i: 4, active: true, step: 0, move: false },
-      { id: 5, i: 5, active: true, step: 0, move: false },
-      { id: 6, i: 6, active: true, step: 0, move: false },
-      { id: 7, i: 7, active: true, step: 0, move: false },
-      { id: 8, i: 8, active: false, step: 0, move: false }
     ],
     puzzleList: [
-      { id: 0, i: 0, active: true, step: 0 },
-      { id: 1, i: 1, active: true, step: 0 },
-      { id: 2, i: 2, active: true, step: 0 },
-      { id: 3, i: 3, active: true, step: 0 },
-      { id: 4, i: 4, active: true, step: 0 },
-      { id: 5, i: 5, active: true, step: 0 },
-      { id: 6, i: 6, active: true, step: 0 },
-      { id: 7, i: 7, active: true, step: 0 },
-      { id: 8, i: 8, active: false, step: 0 }
     ],
     animate: 'animate-short', // animate-long
     win: false
   },
   onLoad() {
+    if (this.options.size) {
+      const number = parseInt(this.options.size)
+      const count = number * number
+      this.setData({
+        number,
+        count
+      })
+    }
+    const puzzles = []
+    const puzzleList = []
+    this.number = Math.sqrt(this.data.count)
+    const length = 672 / this.number
+    for(let i = 0; i < this.data.count; i++) {
+      const active = this.data.count !== i + 1
+      puzzles.push({ id: i, i, active, step: 0, move: false })
+      puzzleList.push({ id: i, i: i, active, step: 0 })
+    }
+    this.setData({
+      puzzles,
+      puzzleList,
+      length
+    })
     this.puzzlesFilter()
     setTimeout(() => {
       this.puzzlesDisorder()
@@ -40,11 +47,11 @@ Page({
       }
     })
     const arr = this.data.puzzles.map((item) => {
-      const x = item.i % 3, y = Math.floor(item.i / 3)
-      const positionX = x * 224
-      const positionY = y * 224
-      const imgX = - item.id % 3 * 220
-      const imgY = - Math.floor(item.id / 3) * 220
+      const x = item.i % this.number, y = Math.floor(item.i / this.number)
+      const positionX = x * this.data.length
+      const positionY = y * this.data.length
+      const imgX = - item.id % this.number * (this.data.length - 4)
+      const imgY = - Math.floor(item.id / this.number) * (this.data.length - 4)
       return { ...item, x, y, positionX, positionY, imgX, imgY }
     })
     this.setData({
@@ -55,7 +62,7 @@ Page({
     let i = 0
     const handle = () => {
       setTimeout(() => {
-        if (i < 20) {
+        if (i < this.data.count * 6) {
           const emptyItem = this.data.puzzles.find(el => el.active === false)
           const nearby = this.nearbyFind()
           const { id } = nearby[Math.floor(Math.random() * nearby.length)]
@@ -71,7 +78,7 @@ Page({
             animate: 'animate-long'
           })
         }
-      }, 120)
+      }, 120 / Math.sqrt(this.data.count))
     }
     handle()
   },

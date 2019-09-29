@@ -21,11 +21,9 @@
 }
 .puzzle-item {
   position: absolute;
-  width: 224rpx;
-  height: 224rpx;
   background-color: #eee;
   border: 2rpx solid #fff;
-  background-image: url(http://ofnct0qsm.bkt.clouddn.com/game-bg-01.jpg);
+  background-image: url(https://fansclub-dev.oss-cn-hangzhou.aliyuncs.com/find/puzzle-bg.jpg);
   background-size: 660rpx 660rpx;
   background-repeat: no-repeat;
   background-position: -220rpx -220rpx;

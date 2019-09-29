@@ -16,5 +16,7 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
-  <navigator url="../game/index">跳转到游戏页面</navigator>
+  <navigator url="../game/index?size=3">跳转到游戏页面3x3</navigator>
+  <navigator url="../game/index?size=4">跳转到游戏页面4x4</navigator>
+  <navigator url="../game/index?size=5">跳转到游戏页面5x5</navigator>
 </view>

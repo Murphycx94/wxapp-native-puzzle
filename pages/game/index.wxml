@@ -7,7 +7,7 @@
     <view class="game-main__box">
       <view
         class="puzzle-item {{ animate }}"
-        style="transform: translate3d({{ item.positionX }}rpx, {{ item.positionY }}rpx, 0); background-position: {{ item.imgX }}rpx {{ item.imgY }}rpx;"
+        style="transform: translate3d({{ item.positionX }}rpx, {{ item.positionY }}rpx, 0); background-position: {{ item.imgX }}rpx {{ item.imgY }}rpx; width: {{ length }}rpx; height: {{ length }}rpx"
         wx:for="{{ puzzleList }}"
         wx:key="{{ item.i }}"
         wx:if="{{ item.active }}"
